@@ -4,7 +4,7 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import connectDB from "./utils/db.js";
 import userRoute from "./routes/userRoutes.js";
-// import postRoute from "./routes/psotRoutes.js";
+import postRoute from "./routes/psotRoutes.js";
 // import messageRoute from "./routes/messageRoutes.js";
 // import { app, server } from "./socket/socket.js";
 import path from "path";
@@ -27,7 +27,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use("/api/v1/user", userRoute);
-// app.use("/api/v1/post", postRoute);
+app.use("/api/v1/post", postRoute);
 // app.use("/api/v1/message", messageRoute);
 
 app.use(express.static(path.join(__dirname, "/frontend/dist")));

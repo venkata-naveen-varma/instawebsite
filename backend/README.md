@@ -1,14 +1,16 @@
 npm modules:
 
-- cookie-parser, http-only cookies
-- json web token (JWT), user authrntication
-- bcrypt, encrypt private data
-- datauri, for
-- cloudinary, to store files for user posts,profile
+- socket.io, for real-time notifications
+- cookie-parser, for http-only cookies
+- json web token (JWT), for user authrntication
+- bcrypt, for encrypting private data
+- datauri
+- cloudinary, for storing files like user posts and profile pictures
 
-env file parameters:
-MONGODB_URI
-JWT_SECRET_KEY
-CLOUDINARY_CLOUD_NAME
-CLOUDINARY_API_KEY
-CLOUDINARY_API_SECRET
+env file format:
+
+- MONGODB_URI
+- JWT_SECRET_KEY
+- CLOUDINARY_CLOUD_NAME
+- CLOUDINARY_API_KEY
+- CLOUDINARY_API_SECRET
