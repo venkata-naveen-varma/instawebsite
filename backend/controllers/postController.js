@@ -122,21 +122,21 @@ export const likePost = async (req, res) => {
         await post.save();
 
         // implement socket io for real time notification
-        // const user = await User.findById(current_userid).select('username profilePicture');
+        const user = await User.findById(current_userid).select('username profilePicture');
          
-        // const postOwnerId = post.author.toString();
-        // if(postOwnerId !== current_userid){
-        //     // emit a notification event
-        //     const notification = {
-        //         type:'like',
-        //         userId:current_userid,
-        //         userDetails:user,
-        //         postId,
-        //         message:'Your post was liked'
-        //     }
-        //     const postOwnerSocketId = getReceiverSocketId(postOwnerId);
-        //     io.to(postOwnerSocketId).emit('notification', notification);
-        // }
+        const postOwnerId = post.author.toString();
+        if(postOwnerId !== current_userid){
+            // emit a notification event
+            const notification = {
+                type:'like',
+                userId:current_userid,
+                userDetails:user,
+                postId,
+                message:'Your post was liked'
+            }
+            const postOwnerSocketId = getReceiverSocketId(postOwnerId);
+            io.to(postOwnerSocketId).emit('notification', notification);
+        }
         return res.status(200).json({message:'Post liked', success:true});
     } catch (error) {
         console.log("Error in postController.likePost(): ", error);
@@ -160,20 +160,20 @@ export const dislikePost = async (req, res) => {
         await post.save();
 
         // implement socket io for real time notification
-        // const user = await User.findById(current_userid).select('username profilePicture');
-        // const postOwnerId = post.author.toString();
-        // if(postOwnerId !== current_userid){
-        //     // emit a notification event
-        //     const notification = {
-        //         type:'dislike',
-        //         userId:current_userid,
-        //         userDetails:user,
-        //         postId,
-        //         message:'Your post was liked'
-        //     }
-        //     const postOwnerSocketId = getReceiverSocketId(postOwnerId);
-        //     io.to(postOwnerSocketId).emit('notification', notification);
-        // }
+        const user = await User.findById(current_userid).select('username profilePicture');
+        const postOwnerId = post.author.toString();
+        if(postOwnerId !== current_userid){
+            // emit a notification event
+            const notification = {
+                type:'dislike',
+                userId:current_userid,
+                userDetails:user,
+                postId,
+                message:'Your post was liked'
+            }
+            const postOwnerSocketId = getReceiverSocketId(postOwnerId);
+            io.to(postOwnerSocketId).emit('notification', notification);
+        }
         return res.status(200).json({message:'Post disliked', success:true});
     } catch (error) {
         console.log("Error in postController.dislikePost(): ", error);
@@ -188,7 +188,7 @@ export const dislikePost = async (req, res) => {
 export const addComment = async (req,res) =>{
     try {
         const postId = req.params.id;
-        const commentKrneWalaUserKiId = req.id;
+        const current_userid = req.id;
 
         const {text} = req.body;
 
@@ -198,7 +198,7 @@ export const addComment = async (req,res) =>{
 
         const comment = await Comment.create({
             text,
-            author:commentKrneWalaUserKiId,
+            author:current_userid,
             post:postId
         })
 
