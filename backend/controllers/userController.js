@@ -27,13 +27,14 @@ const register = async (req, res)=>{
             });
         }
         const hashedPassword = await bcrypt.hash(password, 10);
-        await User.create({username, email,hashedPassword});
+        await User.create({username, email,password:hashedPassword});
         return res.status(201).json({
             message: "Account created successfully.",
             success: true,
         });
     } catch (error) {
         console.log("Error in userController.register(): ", error);
+        return res.status(400).json({message: "Try again!"});
     }
 }
 /**
@@ -95,6 +96,7 @@ const login = async (req, res) => {
 
     } catch (error) {
         console.log("Error in userController.login(): ", error);
+        return res.status(400).json({message: "Try again!"});
     }
 };
 /**
@@ -110,6 +112,7 @@ const logout = async (_, res) => {
         });
     } catch (error) {
         console.log("Error in userController.logout(): ", error);
+        return res.status(400).json({message: "Try again!"});
     }
 };
 /**
@@ -127,6 +130,7 @@ const getProfile = async (req, res) => {
         });
     } catch (error) {
         console.log("Error in userController.getProfile(): ", error);
+       return res.status(400).json({message: "Try again!"});
     }
 };
 /**
@@ -167,6 +171,7 @@ const editProfile = async (req, res) => {
 
     } catch (error) {
         console.log("Error in userController.editProfile(): ", error);
+        return res.status(400).json({message: "Try again!"});
     }
 };
 /**
@@ -188,6 +193,7 @@ const getSuggestedUsers = async (req, res) => {
         })
     } catch (error) {
         console.log("Error in userController.getSuggestedUsers(): ", error);
+        return res.status(400).json({message: "Try again!"});
     }
 };
 /**
@@ -234,6 +240,7 @@ const followOrUnfollow = async (req, res) => {
         }
     } catch (error) {
         console.log("Error in userController.followOrUnfollow(): ", error);
+        return res.status(400).json({message: "Try again!"});
     }
 }
 
