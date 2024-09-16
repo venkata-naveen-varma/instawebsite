@@ -3,7 +3,8 @@ npm modules:
 - cookie-parser, http-only cookies
 - json web token (JWT), user authrntication
 - bcrypt, encrypt private data
-- datauri and cloudinary, to fetch image-file for profile picture
+- datauri, for
+- cloudinary, to store files for user posts,profile
 
 env file parameters:
 MONGODB_URI
