@@ -64,7 +64,7 @@ export const getMessage = async (req,res) => {
         return res.status(200).json({success:true, messages:conversation?.messages});
         
     } catch (error) {
-        console.log("Error in messageController.receiveMessage(): ", error);
+        console.log("Error in messageController.getMessage(): ", error);
         return res.status(400).json({message: "Try again!"});
     }
 }
