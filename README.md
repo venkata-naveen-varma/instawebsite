@@ -1,3 +1,7 @@
+# A Full Stack Insta-web application
+
+A full stack "InstaWeb" application that includes all features of instagram. Built using MongoDB, Expressjs, Reactjs, Nodejs (MERN).
+
 ### Modules utilized in backend:
 
 - socket.io (Real-time notifications)
