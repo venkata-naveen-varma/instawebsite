@@ -17,6 +17,7 @@ A full stack "InstaWeb" application that includes all features of instagram. Bui
 
 - reactjs
 - socket.io-client (client side socket operations)
+- tailwindcss
 
 ### env file format:
 
