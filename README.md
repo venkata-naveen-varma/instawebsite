@@ -16,7 +16,7 @@ A full stack "InstaWeb" application that includes all features of instagram. Bui
 ### Modules utilized in frontend:
 
 - reactjs
-- socket.io-client, for client side socket operations
+- socket.io-client (client side socket operations)
 
 ### env file format:
 
